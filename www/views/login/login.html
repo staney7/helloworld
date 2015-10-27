@@ -1,0 +1,40 @@
+<ion-view view-title="登 录">
+    <ion-content scroll="false" id="loginForm">
+        <div class="panel">  
+            <img src="img/rec_banner.png">
+            <form name="loginForm" novalidate ng-submit="login(loginForm)">
+                <div class="list padding list-inset">
+                    <div class="relative">
+                        <label class="item item-input" ng-class="{'has-error': loginForm.
+                                    username.$dirty && loginForm.username.$invalid}">
+                            <i class="icon ion-ios-person-outline assertive"></i>
+                            <input name="username" type="text" required 
+                                   placeholder="请输入用户名" ng-model="credentials.username"/>
+                        </label>
+                    </div>
+                    <div ng-show="loginForm.username.$dirty" 
+                         ng-messages="loginForm.username.$error" 
+                         ng-messages-include="templates/form-errors.html">
+                    </div>
+                    <label class="item item-input"  ng-class="{'has-error': 
+                        loginForm.password.$dirty && loginForm.password.$invalid }"> 
+                        <i class="icon ion-ios-locked-outline assertive"></i>
+                        <input name="password" type="password" required 
+                               placeholder="请输入密码" ng-model="credentials.password" />
+                    </label>
+                    <div ng-show="loginForm.password.$dirty" 
+                         ng-messages="loginForm.password.$error" 
+                         ng-messages-include="templates/form-errors.html">
+                    </div>
+                    <button type="submit" class="button button-positive button-block" 
+                            ng-disabled="loginForm.$invalid">
+                        登 录
+                    </button>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>
+<script id="templates/form-errors.html" type="text/ng-template">  
+    <div class="form-error" ng-message="required">该项必须填写</div>
+</script>

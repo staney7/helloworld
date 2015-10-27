@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!--<script src="templates/detailController.js"></script>-->
+</head>
+<body ng-app="myApp" ng-controller="Mycontroller">
+<!--
+  The nav bar that will be updated as we navigate between views.
+-->
+<ion-header-bar class="bar-positive">
+    <p class="title"> hello</p>
+    <a class="button icon icon-refreshing" ng-click="refresh()"> hello</a>
+</ion-header-bar>
+<!--
+  The views will be rendered in the <ion-nav-view> directive below
+  Templates are in the /templates folder (but you could also
+  have templates inline in this html file if you'd like).
+-->
+<ion-content>
+    <ion-list>
+        <ion-item collection-repeat="item in items">{{item}}</ion-item>
+    </ion-list>
+</ion-content>
+
+</body>
+</html>
+<script>
+    angular.module('myApp',['ionic'])
+            .controller('Mycontroller', function($scope,$ionicLoading,$timeout){
+                $scope.items=[];
+                $scope.load=function(){
+                    $ionicLoading.show({
+                        templateUrl:"a.html",
+                        duration:1000,
+                    });
+
+                };
+                $scope.refresh=function() {
+                    var i = 0;
+                    for (i = 0; i < 20; i++) {
+                        $scope.items.unshift("item" + i);
+                    }
+                    console.log($scope.items);
+                    $scope.load();
+                }
+            });
+
+
+</script>
+
+<script type="text/ng-template" id="a.html">
+    <i class="icon ion-ios-home"></i>
+</script>

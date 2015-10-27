@@ -1,0 +1,15 @@
+<ion-tabs class="tabs-icon-top tabs-positive  {{isTabsShow}}">
+	<ion-tab title="网盘" icon-on="ion-android-cloud" icon-off="ion-android-cloud-outline"
+			 ui-sref="tabs.netdisk">
+		<ion-nav-view name="netdisk-tab">
+		</ion-nav-view>
+	</ion-tab>
+	<ion-tab title="分享" icon-on="fa fa-share-alt" icon-off="fa fa-share-alt"
+			 ui-sref="tabs.share">
+		<ion-nav-view name="share-tab"></ion-nav-view>
+	</ion-tab>
+	<ion-tab title="关于我" icon-on="ion-ios-person" icon-off="ion-ios-person-outline"
+			 ui-sref="tabs.aboutMe">
+		<ion-nav-view name="aboutMe-tab"></ion-nav-view>
+	</ion-tab>
+</ion-tabs>

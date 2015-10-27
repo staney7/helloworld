@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+	<style type="text/css">
+		.imgtest{margin:10px 5px;
+			overflow:hidden;}
+		.list_ul figcaption p{
+			font-size:12px;
+			color:#aaa;
+		}
+		.imgtest figure div{
+			display:inline-block;
+			margin:5px auto;
+			width:100px;
+			height:100px;
+			border-radius:100px;
+			border:2px solid #fff;
+			overflow:hidden;
+			-webkit-box-shadow:0 0 3px #ccc;
+			box-shadow:0 0 3px #ccc;
+		}
+		.imgtest img{width:100%;
+			min-height:100%; text-align:center;}
+	</style>
+</head>
+<body>
+<ion-view view-title="关于我">
+	<ion-content style="padding: 10px;">
+		<!--<a href="http://www.bootcss.com/" class="button button-block button-rounded button-royal button-large">Go</a>-->
+
+
+		<ion-list>
+			<ion-item class="item-thumbnail-left">
+				<img src="img/portrait.jpg" alt=""/>
+				<h2>郑晓杰</h2>
+				<p>可用空间：</p>
+			</ion-item>
+		</ion-list>
+
+		<span class="button button-rounded button-block" ng-click="getUserInfo()">设置</span>
+
+		<span class="button button-rounded button-royal button-block"
+			  ng-click="exit()">退出登录</span>
+
+	</ion-content>
+
+</ion-view>
+</body>
+</html>

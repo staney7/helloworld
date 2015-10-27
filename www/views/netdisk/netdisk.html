@@ -1,0 +1,73 @@
+
+<ion-view view-title="网盘">
+	<ion-header-bar class="bar-subheader bar-stable" style="padding: 0px;">
+		<h4>当前目录：<span ng-bind="currentFileRoute()"></span></h4>
+	</ion-header-bar>
+
+	<ion-nav-buttons side="right">
+		<a  class="button button-primary button-rounded button-tiny" ng-click="downloadListClick()">
+			<i class="fa fa-download fa-2x"></i>
+		</a>
+	</ion-nav-buttons>
+    <ion-content class="has-subheader">
+
+		<ion-refresher
+				pulling-text="刷新..."
+				on-refresh="doRefresh()">
+		</ion-refresher>
+		<ion-list>
+			<ion-item ng-click="backClick()" ng-show="isBackShow()" class="item-icon-left" style="padding-bottom: 10px;padding-top: 10px;" on-hold="itemOnHold(）">
+				<i class="icon fa fa-reply" style="color:orange;font-size:30px;"></i>
+				返回上一层
+			</ion-item >
+			<div ng-repeat="file in netdiskFolderIndex"  >
+				<ion-item  on-hold="itemOnHold(file)" ng-click="indexClick(file)"
+						  style="height:60px;padding-top: 10px; padding-bottom: 10px"
+						  class="item-icon-left item-icon-right">
+					<i class="{{fileIconType(file)}}" style="color:orange;font-size:42px;"></i>
+					<span ng-bind="file.name"></span>
+					<p ng-bind="file.update_time"></p>
+				</ion-item>
+			</div>
+			<div ng-repeat="file in netdiskFileIndex">
+			<ion-item  on-hold="itemOnHold(file)" ng-click="indexClick(file)"
+					  style="height:60px;  padding-top: 10px; padding-bottom: 10px"
+					  class="item-icon-left item-icon-right">
+				<i class="{{fileIconType(file)}}" style="color:orange;font-size:42px;"></i>
+				<span ng-bind="file.name"></span>
+				<p>{{bytesToOthers(file.bytes)}} | {{file.update_time}}</p>
+			</ion-item>
+			<ion-item ng-show="isFileMenuShow(file)" class="item-stable" style="padding:1px">
+				<div class="button-bar">
+					<button  class="button"  ng-click="itemDownloadClick(file)">
+						<i class="fa fa-download fa-lg"></i>
+						下载
+					</button>
+					<button  class="button" ng-click="itemShareClick(file)">
+						<i class="fa fa-share-square-o fg-lg"> </i>
+						分享</button>
+					<button  class="button" ng-click="itemDeleteClick(file)">
+						<i class="fa fa-trash-o fg-lg"> </i>
+						删除
+					</button>
+				</div>
+			</ion-item>
+			</div>
+		</ion-list>
+
+	</ion-content>
+
+
+	<button class="button button-royal button-circle button-action button-jumbo"
+			ng-click="addButtonClick()"
+			style="position:absolute;bottom:60px; right:10px;">
+		<i class="fa fa-plus"></i>
+	</button>
+	<!--<ion-footer-bar class="bar-positive" keyboard-attach="true">-->
+		<!--<div class="button-bar">-->
+			<!--<button  class="button button-primary button-rounded button-tiny" ng-click="">下载</button>-->
+			<!--<button  class="button button-primary button-rounded button-tiny" ng-click="">移动</button>-->
+			<!--<button  class="button button-primary button-rounded button-tiny" ng-click="">删除</button>-->
+		<!--</div>-->
+	<!--</ion-footer-bar>-->
+</ion-view>

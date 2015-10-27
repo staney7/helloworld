@@ -1,0 +1,44 @@
+
+<ion-view view-title="我的分享">
+    <ion-content >
+        <ion-refresher
+                pulling-text="刷新..."
+                on-refresh="doRefresh()">
+        </ion-refresher>
+        <ion-list>
+
+            <div collection-repeat="file in shareFileIndex">
+                <ion-item
+                          on-hold="itemOnHold()"
+                          ng-click="indexClick(file)"
+                          style="padding-bottom: 10px;padding-top: 10px;"
+                          class="item-icon-left item-icon-right">
+                    <i class="{{shareFileIconType(file)}}" style="color:orange;font-size:42px;"></i>
+
+                    <ion-option-button class="button-assertive"
+                                       ng-click="edit(item)">
+                        Edit
+                    </ion-option-button>
+                    <span ng-bind="file.name"></span>
+                    <p>{{file.share_time}} |  {{file.rtime}}</p>
+
+                </ion-item>
+
+                <ion-item ng-show="isFileMenuShow(file)" class="item-stable" style="padding:1px">
+                    <div class="button-bar">
+                        <button  class="button"  ng-click="deleteShareFile(file)">
+                            <i class="fa fa-download fa-lg"></i>
+                            取消分享
+                        </button>
+                        <button  class="button" ng-click="copyShareFileLink(file)">
+                            <i class="fa fa-share-square-o fg-lg"> </i>
+                            复制链接
+                        </button>
+                    </div>
+                </ion-item>
+            </div>
+
+        </ion-list>
+
+    </ion-content>
+</ion-view>
